@@ -9,6 +9,9 @@ class MyApp extends StatelessWidget {
       title: 'Routing Demo',
       theme: ThemeData(primarySwatch: Colors.blue),
       home: FirstPage(),
+      routes: {
+        '/second':(_)=> SecondPage(data: "This is Static Data coming from there",)
+      },
     );
   }
 }
@@ -32,12 +35,7 @@ class FirstPage extends StatelessWidget {
             RaisedButton(
                 child: Text('Go To Second'),
                 onPressed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) =>
-                          SecondPage(data: 'Hello There From first Page'),
-                    ),
-                  );
+                  Navigator.of(context).pushNamed('/second');
                 })
           ],
         ),
