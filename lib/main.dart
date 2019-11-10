@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_routes_and_navigation/route_generator.dart';
 
 void main() => runApp(MyApp());
 
@@ -8,10 +9,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Routing Demo',
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: FirstPage(),
-      routes: {
-        '/second':(_)=> SecondPage(data: "This is Static Data coming from there",)
-      },
+      initialRoute: '/',
+      onGenerateRoute: RouteGenerator.generateRoute,
     );
   }
 }
@@ -35,7 +34,7 @@ class FirstPage extends StatelessWidget {
             RaisedButton(
                 child: Text('Go To Second'),
                 onPressed: () {
-                  Navigator.of(context).pushNamed('/second');
+                  Navigator.of(context).pushNamed('/second',arguments: "Hello From Encapsulated Route");
                 })
           ],
         ),
